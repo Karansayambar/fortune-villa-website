@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { WebGLDistortion } from "./WebGLDistortion";
-import { motion, AnimatePresence } from "framer-motion";
 import Model from "./Model";
+import "../app/globals.css";
 
 // ✅ Import data (static paths, not imported assets)
 import {
@@ -14,6 +14,7 @@ import {
   outdoorContent,
   swimmingContent,
 } from "@/utils/images";
+import Image from "next/image";
 
 const HorizontalScrollGallery = () => {
   const containerRef = useRef(null);
@@ -279,8 +280,39 @@ const HorizontalScrollGallery = () => {
                               loading="lazy"
                               className="w-full h-full object-cover opacity-0"
                             />
+                            {/* Overlay (always visible) */}
+                            <div
+                              className="absolute inset-0 bg-black/30 flex flex-col items-center justify-center cursor-pointer"
+                              onClick={() => {
+                                setCategory(items);
+                                setIsModalOpen(true);
+                              }}
+                            ></div>
                           </>
                         )}
+                        <div
+                          className="absolute inset-0 bg-black/30 flex flex-col items-center justify-center cursor-pointer"
+                          onClick={() => {
+                            setCategory(items);
+                            setIsModalOpen(true);
+                          }}
+                        >
+                          <div className=" flex">
+                            <div className="flex flex-col text-center text-amber-400">
+                              <div className="relative flex items-center justify-center">
+                                {/* Waves */}
+                                <span className="absolute w-20 h-20 rounded-full bg-white opacity-30 z-0 animate-pulseWave" />
+                                <span className="absolute w-20 h-20 rounded-full bg-white opacity-30 z-0 animate-pulseWave animate-pulseWave-delay-1" />
+                                <span className="absolute w-20 h-20 rounded-full bg-white opacity-30 z-0 animate-pulseWave animate-pulseWave-delay-2" />
+
+                                {/* Button */}
+                                <div className="relative z-10 text-white px-2 py-8 font-bold text-lg border border-white rounded-full bg-transparent">
+                                  Click Here
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
 
@@ -353,12 +385,38 @@ const HorizontalScrollGallery = () => {
                       muted
                     />
                   ) : (
-                    <img
+                    <Image
                       src={firstItem.src}
-                      alt=""
+                      alt={`${sectionTitle} preview`}
+                      fill
+                      priority
                       className="w-full h-full object-cover"
                     />
                   )}
+                  {/* Overlay (always visible) */}
+                  <div
+                    className="absolute inset-0 bg-black/30 flex flex-col items-center justify-center cursor-pointer"
+                    onClick={() => {
+                      setCategory(items);
+                      setIsModalOpen(true);
+                    }}
+                  >
+                    <div className=" flex">
+                      <div className="flex flex-col text-center text-amber-400">
+                        <div className="relative flex items-center justify-center">
+                          {/* Waves */}
+                          <span className="absolute w-20 h-20 rounded-full bg-white opacity-30 z-0 animate-pulseWave" />
+                          <span className="absolute w-20 h-20 rounded-full bg-white opacity-30 z-0 animate-pulseWave animate-pulseWave-delay-1" />
+                          <span className="absolute w-20 h-20 rounded-full bg-white opacity-30 z-0 animate-pulseWave animate-pulseWave-delay-2" />
+
+                          {/* Button */}
+                          <div className="relative z-10 text-white px-2 py-8 font-bold text-lg border border-white rounded-full bg-transparent">
+                            Click Here
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </>
               );
             })()}
