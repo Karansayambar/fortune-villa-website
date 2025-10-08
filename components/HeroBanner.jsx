@@ -18,7 +18,10 @@ export default function HeroBanner() {
           playsInline
           onError={() => setVideoError(true)}
         >
-          <source src="/assets/outdoor1.mp4" type="video/mp4" />
+          <source
+            src="https://res.cloudinary.com/dmmjvjjeg/video/upload/v1759926668/outdoor1_pfmcn3.mp4"
+            type="video/mp4"
+          />
         </video>
       ) : (
         <Image
