@@ -250,7 +250,7 @@ const HorizontalScrollGallery = () => {
                     </div>
 
                     {/* ✅ Main Preview */}
-                    <div className="relative z-10 w-full max-w-7xl mx-auto">
+                    <div className="relative z-10 w-[70%] max-w-7xl mx-auto">
                       <div className="relative w-full h-[70vh] max-h-[800px] overflow-hidden shadow-2xl rounded-[50px]">
                         {firstItem.type === "video" ? (
                           <video
