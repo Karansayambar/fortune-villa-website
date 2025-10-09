@@ -3,8 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { WebGLDistortion } from "./WebGLDistortion";
 import Model from "./Model";
 import "../app/globals.css";
+import Image from "next/image";
 
-// ✅ Import data (static paths, not imported assets)
 import {
   balcanyContent,
   bathroomContent,
@@ -14,7 +14,6 @@ import {
   outdoorContent,
   swimmingContent,
 } from "@/utils/images";
-import Image from "next/image";
 
 const HorizontalScrollGallery = () => {
   const containerRef = useRef(null);
@@ -26,7 +25,7 @@ const HorizontalScrollGallery = () => {
   const webglRefs = useRef([]);
   const distortionEffects = useRef([]);
 
-  // ✅ Data setup (no imported video files)
+  // Data setup
   const images = {
     outdoorContent,
     bedroomContent,
@@ -57,7 +56,7 @@ const HorizontalScrollGallery = () => {
     };
   });
 
-  // ✅ Detect mobile devices
+  // Detect mobile
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 1024);
     checkMobile();
@@ -65,7 +64,7 @@ const HorizontalScrollGallery = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // ✅ Horizontal Scroll (desktop)
+  // Desktop horizontal scroll
   useEffect(() => {
     if (isMobile) return;
 
@@ -120,7 +119,7 @@ const HorizontalScrollGallery = () => {
     };
   }, [isMobile, data.length]);
 
-  // ✅ WebGL Hover Effect
+  // WebGL Hover Effect
   const setupWebGLEffect = (canvas, imageSrc, index) => {
     if (!canvas) return;
     try {
@@ -167,7 +166,7 @@ const HorizontalScrollGallery = () => {
     return () => observer.disconnect();
   }, [isMobile, data]);
 
-  // ✅ Modal handlers
+  // Modal handlers
   const closeModal = () => {
     setIsModalOpen(false);
     setCategory(null);
@@ -175,21 +174,14 @@ const HorizontalScrollGallery = () => {
   };
 
   const scrollToIndex = (index) => {
-    if (!galleryRef.current || !window.gsap) return;
-    const targetX = -index * window.innerWidth;
-    window.gsap.to(galleryRef.current, {
-      x: targetX,
-      duration: 0.8,
-      ease: "power2.inOut",
-      onComplete: () => setCurrentIndex(index),
-    });
+    const clampedIndex = Math.max(0, Math.min(index, data.length - 1));
+    setCurrentIndex(clampedIndex);
   };
 
-  const scrollPrev = () => setCurrentIndex((prev) => Math.max(prev - 1, 0));
-  const scrollNext = () =>
-    setCurrentIndex((prev) => Math.min(prev + 1, data.length - 1));
+  const scrollPrev = () => scrollToIndex(currentIndex - 1);
+  const scrollNext = () => scrollToIndex(currentIndex + 1);
 
-  // ✅ Keyboard nav
+  // Keyboard nav
   useEffect(() => {
     const handleKey = (e) => {
       if (e.key === "ArrowRight") scrollNext();
@@ -200,9 +192,19 @@ const HorizontalScrollGallery = () => {
     return () => window.removeEventListener("keydown", handleKey);
   }, [currentIndex]);
 
+  // Mobile GSAP animation
+  useEffect(() => {
+    if (!isMobile || !galleryRef.current || !window.gsap) return;
+    window.gsap.to(galleryRef.current, {
+      x: -currentIndex * window.innerWidth,
+      duration: 0.8,
+      ease: "power2.inOut",
+    });
+  }, [currentIndex, isMobile]);
+
   return (
     <div className="relative w-screen">
-      {/* ✅ Desktop View */}
+      {/* Desktop */}
       {!isMobile && (
         <div
           ref={containerRef}
@@ -226,7 +228,6 @@ const HorizontalScrollGallery = () => {
                       </h2>
                     </div>
 
-                    {/* ✅ Background */}
                     <div className="w-full absolute inset-0 opacity-30">
                       {firstItem.type === "video" ? (
                         <video
@@ -249,7 +250,6 @@ const HorizontalScrollGallery = () => {
                       <div className="absolute inset-0 bg-black/30" />
                     </div>
 
-                    {/* ✅ Main Preview */}
                     <div className="relative z-10 w-[70%] max-w-7xl mx-auto">
                       <div className="relative w-full h-[70vh] max-h-[800px] overflow-hidden shadow-2xl rounded-[50px]">
                         {firstItem.type === "video" ? (
@@ -280,16 +280,9 @@ const HorizontalScrollGallery = () => {
                               loading="lazy"
                               className="w-full h-full object-cover opacity-0"
                             />
-                            {/* Overlay (always visible) */}
-                            <div
-                              className="absolute inset-0 bg-black/30 flex flex-col items-center justify-center cursor-pointer"
-                              onClick={() => {
-                                setCategory(items);
-                                setIsModalOpen(true);
-                              }}
-                            ></div>
                           </>
                         )}
+
                         <div
                           className="absolute inset-0 bg-black/30 flex flex-col items-center justify-center cursor-pointer"
                           onClick={() => {
@@ -300,12 +293,9 @@ const HorizontalScrollGallery = () => {
                           <div className=" flex">
                             <div className="flex flex-col text-center text-amber-400">
                               <div className="relative flex items-center justify-center">
-                                {/* Waves */}
                                 <span className="absolute w-20 h-20 rounded-full bg-white opacity-30 z-0 animate-pulseWave" />
                                 <span className="absolute w-20 h-20 rounded-full bg-white opacity-30 z-0 animate-pulseWave animate-pulseWave-delay-1" />
                                 <span className="absolute w-20 h-20 rounded-full bg-white opacity-30 z-0 animate-pulseWave animate-pulseWave-delay-2" />
-
-                                {/* Button */}
                                 <div className="relative z-10 text-white px-2 py-8 font-bold text-lg border border-white rounded-full bg-transparent">
                                   Click Here
                                 </div>
@@ -327,7 +317,7 @@ const HorizontalScrollGallery = () => {
             )}
           </div>
 
-          {/* ✅ Navigation */}
+          {/* Navigation */}
           <div className="relative z-20 flex flex-col items-center space-y-4">
             <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex items-center bg-white/10 backdrop-blur-md rounded-full px-6 py-3 border border-white/20 shadow-lg space-x-6">
               <button
@@ -357,18 +347,21 @@ const HorizontalScrollGallery = () => {
         </div>
       )}
 
-      {/* ✅ Mobile View */}
+      {/* Mobile */}
       {isMobile && (
-        <div className="relative min-h-screen w-screen overflow-hidden bg-black">
-          {/* Mobile content simplified for speed */}
-          <div className="flex flex-col items-center justify-center h-screen relative">
-            {(() => {
-              const { sectionTitle, sectionDescription, items } =
-                data[currentIndex];
+        <div className="relative w-screen h-screen overflow-hidden bg-black">
+          <div
+            ref={galleryRef}
+            className="flex w-full h-full transition-transform"
+          >
+            {data.map(({ sectionTitle, sectionDescription, items }, index) => {
               const firstItem = items[0];
               return (
-                <>
-                  <div className="absolute top-10 text-center px-4">
+                <div
+                  key={index}
+                  className="flex-shrink-0 w-full h-full relative"
+                >
+                  <div className="absolute top-10 text-center px-4 z-10">
                     <h2 className="text-4xl font-bold text-white">
                       {sectionTitle}
                     </h2>
@@ -376,6 +369,7 @@ const HorizontalScrollGallery = () => {
                       {sectionDescription}
                     </p>
                   </div>
+
                   {firstItem.type === "video" ? (
                     <video
                       src={firstItem.src}
@@ -389,11 +383,10 @@ const HorizontalScrollGallery = () => {
                       src={firstItem.src}
                       alt={`${sectionTitle} preview`}
                       fill
-                      priority
-                      className="w-full h-full object-cover"
+                      className="object-cover"
                     />
                   )}
-                  {/* Overlay (always visible) */}
+
                   <div
                     className="absolute inset-0 bg-black/30 flex flex-col items-center justify-center cursor-pointer"
                     onClick={() => {
@@ -404,12 +397,9 @@ const HorizontalScrollGallery = () => {
                     <div className=" flex">
                       <div className="flex flex-col text-center text-amber-400">
                         <div className="relative flex items-center justify-center">
-                          {/* Waves */}
                           <span className="absolute w-20 h-20 rounded-full bg-white opacity-30 z-0 animate-pulseWave" />
                           <span className="absolute w-20 h-20 rounded-full bg-white opacity-30 z-0 animate-pulseWave animate-pulseWave-delay-1" />
                           <span className="absolute w-20 h-20 rounded-full bg-white opacity-30 z-0 animate-pulseWave animate-pulseWave-delay-2" />
-
-                          {/* Button */}
                           <div className="relative z-10 text-white px-2 py-8 font-bold text-lg border border-white rounded-full bg-transparent">
                             Click Here
                           </div>
@@ -417,14 +407,30 @@ const HorizontalScrollGallery = () => {
                       </div>
                     </div>
                   </div>
-                </>
+                </div>
               );
-            })()}
+            })}
+          </div>
+
+          {/* Mobile navigation */}
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex space-x-4 z-20">
+            <button
+              onClick={scrollPrev}
+              className="px-6 py-3 bg-white/20 text-white rounded-lg"
+            >
+              Prev
+            </button>
+            <button
+              onClick={scrollNext}
+              className="px-6 py-3 bg-white/20 text-white rounded-lg"
+            >
+              Next
+            </button>
           </div>
         </div>
       )}
 
-      {/* ✅ Modal */}
+      {/* Modal */}
       {isModalOpen && category && (
         <Model
           category={category}

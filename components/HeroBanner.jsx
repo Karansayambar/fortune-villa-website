@@ -121,7 +121,7 @@ export default function HeroBanner() {
           ].map((stat, idx) => (
             <div
               key={idx}
-              className="group relative bg-white/5 backdrop-blur-md border border-white/20 rounded-2xl p-6 text-center hover:bg-white/10 hover:border-amber-400/30 transition-all duration-300"
+              className="group relative bg-white/5  border border-white/20 rounded-2xl p-6 text-center hover:bg-white/10 hover:border-amber-400/30 transition-all duration-300"
             >
               <div className="text-2xl md:text-3xl font-bold text-amber-400 mb-2 group-hover:scale-110 transition-transform duration-300">
                 {stat.number}
