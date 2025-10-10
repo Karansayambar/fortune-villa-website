@@ -189,7 +189,7 @@ export default function Bookings() {
               <span className="font-semibold text-white">5 Min to Beach</span> •
               🏊 <span className="font-semibold text-white">Private Pool</span>{" "}
               • 🎯{" "}
-              <span className="font-semibold text-white">15+ Amenities</span>
+              <span className="font-semibold text-white">10+ Amenities</span>
             </span>
           </p>
 
