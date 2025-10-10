@@ -23,14 +23,11 @@ export default function HeroBanner() {
           playsInline
           onError={() => setVideoError(true)}
         >
-          <source
-            src="https://res.cloudinary.com/dmmjvjjeg/video/upload/v1759926668/outdoor1_pfmcn3.mp4"
-            type="video/mp4"
-          />
+          <source src="/assets/outdoor1.mp4" type="video/mp4" />
         </video>
       ) : (
         <Image
-          src="/assets/bannerImg.JPG"
+          src="/assets/bannerImg.jpg"
           alt="Hero Banner"
           className="absolute top-0 left-0 w-full h-full object-cover"
           fill

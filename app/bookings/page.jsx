@@ -80,7 +80,7 @@ export default function Bookings() {
     },
 
     {
-      url: "./assets/livingRoom.png",
+      url: "./assets/livingRoom.jpg",
       alt: "Living Area",
     },
 
@@ -89,7 +89,7 @@ export default function Bookings() {
       alt: "Balcony Area",
     },
     {
-      url: "./assets/outdoor.JPG",
+      url: "./assets/outdoor.jpg",
       alt: "Luxury Kitchen",
     },
     {
@@ -178,14 +178,18 @@ export default function Bookings() {
 
           {/* Features */}
           <p
-            className={`text-lg md:text-xl text-blue-100/80 mb-10 md:mb-12 transition-all duration-1000 delay-700 ${
+            className={`text-lg md:text-xl text-white mb-10 md:mb-12 transition-all duration-1000 delay-700 ${
               isVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-10"
             }`}
           >
-            <span className="bg-gradient-to-r from-amber-400/20 to-teal-400/20 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/10">
-              🏖️ 5 Min to Beach • 🏊 Private Pool • 🎯 15+ Amenities
+            <span className="bg-gradient-to-r from-amber-100/40 to-teal-400/40 backdrop-blur-md px-5 py-2 rounded-xl border border-white/20 shadow-md inline-block">
+              🏖️{" "}
+              <span className="font-semibold text-white">5 Min to Beach</span> •
+              🏊 <span className="font-semibold text-white">Private Pool</span>{" "}
+              • 🎯{" "}
+              <span className="font-semibold text-white">15+ Amenities</span>
             </span>
           </p>
 
@@ -311,7 +315,7 @@ export default function Bookings() {
             },
             {
               icon: Trees,
-              title: "4 AC Bedrooms",
+              title: "Fully AC villa",
               desc: "Spacious & luxuriously furnished",
             },
             {
@@ -379,7 +383,7 @@ export default function Bookings() {
           {/* Amenities Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {[
-              "4 Fully Air-Conditioned Bedrooms (1 Ground + 3 First Floor)",
+              "Fully Air-Conditioned",
               "Private Swimming Pool with Lounge Area",
               "Landscaped Garden & Sit-Out Terrace",
               "Modern, Fully Equipped Kitchen",
@@ -391,6 +395,7 @@ export default function Bookings() {
               "In-House Chef & Local Meals",
               "Secure 4-Car Parking",
               "Security & CCTV Surveillance",
+              "Bluetooth speaker",
             ].map((amenity, idx) => (
               <div
                 key={idx}
@@ -424,16 +429,19 @@ export default function Bookings() {
 
           <div className="flex flex-col md:flex-row justify-center items-stretch gap-10">
             {/* Weekdays Card */}
-            <div className="flex-1 bg-white p-10 md:p-12 rounded-3xl shadow-lg border-2 border-gray-200 hover:border-teal-400 transition-all duration-500 transform hover:scale-105 hover:-translate-y-3 hover:shadow-2xl">
-              <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8">
+            <div className="flex-1 bg-white p-10 md:p-12 rounded-3xl shadow-lg border border-gray-200 hover:border-teal-400 transition-all duration-500 transform hover:scale-105 hover:-translate-y-3 hover:shadow-2xl hover:bg-gradient-to-br hover:from-white hover:to-teal-50">
+              <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8 text-center">
                 Weekdays
               </h3>
-              <div className="mb-10">
-                <p className="text-6xl md:text-7xl font-extrabold text-green-600">
+              <div className="mb-10 text-center">
+                <p className="text-6xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-300 drop-shadow-md">
+                  ₹15,000
+                </p>
+                <p className="text-4xl md:text-5xl font-bold text-green-800/50 line-through mt-2">
                   ₹20,000
                 </p>
-                <p className="text-lg md:text-xl text-gray-600 mt-2">
-                  Per Night (Mon-Thu)
+                <p className="text-lg md:text-xl text-gray-700 mt-3 tracking-wide">
+                  Per Night (Mon–Thu)
                 </p>
               </div>
               <ul className="space-y-6 text-gray-700 text-lg md:text-xl">
@@ -446,7 +454,7 @@ export default function Bookings() {
                     key={idx}
                     className="flex items-center gap-4 transition-transform duration-300 hover:translate-x-2"
                   >
-                    <span className="text-teal-600 font-bold text-2xl">✓</span>{" "}
+                    <span className="text-teal-600 font-bold text-2xl">✓</span>
                     {item}
                   </li>
                 ))}
@@ -454,19 +462,22 @@ export default function Bookings() {
             </div>
 
             {/* Weekends Card */}
-            <div className="flex-1 relative bg-gradient-to-br from-amber-400 to-orange-500 p-10 md:p-12 rounded-3xl shadow-2xl border-2 border-amber-300 transform hover:scale-105 hover:-translate-y-3 transition-all duration-500">
+            <div className="flex-1 relative bg-gradient-to-br from-amber-400 via-orange-500 to-red-400 p-10 md:p-12 rounded-3xl shadow-2xl border border-amber-200 transform hover:scale-105 hover:-translate-y-3 transition-all duration-500 hover:shadow-[0_0_40px_rgba(255,165,0,0.5)]">
               <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-red-600 text-white px-6 py-2 rounded-full font-bold text-lg md:text-xl animate-pulse shadow-lg">
                 MOST POPULAR
               </div>
-              <h3 className="text-4xl md:text-5xl font-bold text-white mb-8 mt-2">
+              <h3 className="text-4xl md:text-5xl font-bold text-white mb-8 mt-2 text-center">
                 Weekends
               </h3>
-              <div className="mb-10">
-                <p className="text-6xl md:text-7xl font-extrabold text-white">
+              <div className="mb-10 text-center">
+                <p className="text-6xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-100 drop-shadow-lg">
+                  ₹20,000
+                </p>
+                <p className="text-4xl md:text-5xl font-bold text-white/70 line-through mt-2">
                   ₹30,000
                 </p>
-                <p className="text-amber-50 text-lg md:text-xl mt-2">
-                  Per Night (Fri-Sun)
+                <p className="text-amber-50 text-lg md:text-xl mt-3 tracking-wide">
+                  Per Night (Fri–Sun)
                 </p>
               </div>
               <ul className="space-y-6 text-white text-lg md:text-xl">
@@ -479,7 +490,8 @@ export default function Bookings() {
                     key={idx}
                     className="flex items-center gap-4 transition-transform duration-300 hover:translate-x-2"
                   >
-                    <span className="font-bold text-2xl">✓</span> {item}
+                    <span className="font-bold text-2xl">✓</span>
+                    {item}
                   </li>
                 ))}
               </ul>
@@ -666,28 +678,29 @@ export default function Bookings() {
             </div>
 
             {/* Right Side - Form */}
-            <div className="relative">
+            <div className="relative flex justify-center">
               {/* Floating Form */}
-              <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-10 transform hover:scale-[1.02] transition-all duration-500">
+              <div className="bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-12 transform hover:scale-[1.02] transition-all duration-500 max-w-3xl w-full border border-gray-100">
                 {/* Form Header */}
-                <div className="text-center mb-8">
-                  <div className="w-16 h-16 bg-gradient-to-r from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <div className="text-center mb-10">
+                  <div className="w-16 h-16 bg-gradient-to-r from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg">
                     <Calendar className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-2xl font-black text-slate-900 mb-2">
+                  <h3 className="text-3xl md:text-4xl font-black text-slate-900 mb-2 tracking-tight">
                     Book Your Stay
                   </h3>
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 text-base md:text-lg">
                     Complete this form to secure your dates
                   </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Name & Phone Row */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <form onSubmit={handleSubmit} className="space-y-8">
+                  {/* Name & Phone */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* Full Name */}
                     <div className="space-y-2">
                       <label className="block text-sm font-semibold text-slate-700">
-                        Full Name *
+                        Full Name <span className="text-red-500">*</span>
                       </label>
                       <div className="relative">
                         <User className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -697,15 +710,16 @@ export default function Bookings() {
                           placeholder="Your full name"
                           value={form.name}
                           onChange={handleChange}
-                          className="w-full border-2 border-gray-200 pl-12 pr-4 py-4 rounded-xl focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-100 transition text-base"
+                          className="w-full border-2 border-gray-200 pl-12 pr-4 py-4 rounded-xl text-base text-slate-800 placeholder-gray-400 focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-100 transition"
                           required
                         />
                       </div>
                     </div>
 
+                    {/* Phone */}
                     <div className="space-y-2">
                       <label className="block text-sm font-semibold text-slate-700">
-                        Phone / WhatsApp *
+                        Phone / WhatsApp <span className="text-red-500">*</span>
                       </label>
                       <div className="relative">
                         <Phone className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -715,19 +729,20 @@ export default function Bookings() {
                           placeholder="+91 98765 43210"
                           value={form.phone}
                           onChange={handleChange}
-                          className="w-full border-2 border-gray-200 pl-12 pr-4 py-4 rounded-xl focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-100 transition text-base"
+                          className="w-full border-2 border-gray-200 pl-12 pr-4 py-4 rounded-xl text-base text-slate-800 placeholder-gray-400 focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-100 transition"
                           required
                         />
                       </div>
                     </div>
                   </div>
 
-                  {/* Date Range */}
+                  {/* Stay Duration */}
                   <div className="space-y-2">
                     <label className="block text-sm font-semibold text-slate-700">
-                      Stay Duration *
+                      Stay Duration <span className="text-red-500">*</span>
                     </label>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {/* Check-in */}
                       <div className="relative">
                         <Calendar className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                         <input
@@ -735,10 +750,12 @@ export default function Bookings() {
                           name="checkIn"
                           value={form.checkIn}
                           onChange={handleChange}
-                          className="w-full border-2 border-gray-200 pl-12 pr-4 py-4 rounded-xl focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-100 transition text-base"
+                          className="w-full border-2 border-gray-200 pl-12 pr-4 py-4 rounded-xl text-base text-slate-800 focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-100 transition"
                           required
                         />
                       </div>
+
+                      {/* Check-out */}
                       <div className="relative">
                         <Calendar className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                         <input
@@ -746,7 +763,7 @@ export default function Bookings() {
                           name="checkOut"
                           value={form.checkOut}
                           onChange={handleChange}
-                          className="w-full border-2 border-gray-200 pl-12 pr-4 py-4 rounded-xl focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-100 transition text-base"
+                          className="w-full border-2 border-gray-200 pl-12 pr-4 py-4 rounded-xl text-base text-slate-800 focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-100 transition"
                           required
                         />
                       </div>
@@ -754,10 +771,11 @@ export default function Bookings() {
                   </div>
 
                   {/* Guests & Occasion */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* Guests */}
                     <div className="space-y-2">
                       <label className="block text-sm font-semibold text-slate-700">
-                        Number of Guests *
+                        Number of Guests <span className="text-red-500">*</span>
                       </label>
                       <div className="relative">
                         <Users className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -765,21 +783,24 @@ export default function Bookings() {
                           name="guests"
                           value={form.guests}
                           onChange={handleChange}
-                          className="w-full border-2 border-gray-200 pl-12 pr-4 py-4 rounded-xl focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-100 transition text-base appearance-none bg-white"
+                          className="w-full border-2 border-gray-200 pl-12 pr-4 py-4 rounded-xl text-base text-slate-800 bg-white focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-100 transition"
                           required
                         >
                           <option value="">Select guests</option>
-                          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(
-                            (num) => (
-                              <option key={num} value={num}>
-                                {num} {num === 1 ? "guest" : "guests"}
-                              </option>
-                            )
-                          )}
+                          {[...Array(15)].map((_, i) => (
+                            <option key={i + 1} value={i + 1}>
+                              {i + 1 === 1
+                                ? `${i + 1} guest`
+                                : i + 1 === 15
+                                ? `${i + 1}+ guests`
+                                : `${i + 1} guests`}
+                            </option>
+                          ))}
                         </select>
                       </div>
                     </div>
 
+                    {/* Occasion */}
                     <div className="space-y-2">
                       <label className="block text-sm font-semibold text-slate-700">
                         Occasion Type
@@ -790,21 +811,21 @@ export default function Bookings() {
                           name="occasion"
                           value={form.occasion}
                           onChange={handleChange}
-                          className="w-full border-2 border-gray-200 pl-12 pr-4 py-4 rounded-xl focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-100 transition text-base appearance-none bg-white"
+                          className="w-full border-2 border-gray-200 pl-12 pr-4 py-4 rounded-xl text-base text-slate-800 bg-white focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-100 transition"
                         >
                           <option value="">Select occasion</option>
-                          <option value="Family Vacation">
-                            Family Vacation
-                          </option>
-                          <option value="Weekend Getaway">
-                            Weekend Getaway
-                          </option>
-                          <option value="Celebration">Celebration</option>
-                          <option value="Corporate Retreat">
-                            Corporate Retreat
-                          </option>
-                          <option value="Honeymoon">Honeymoon</option>
-                          <option value="Other">Other</option>
+                          {[
+                            "Family Vacation",
+                            "Weekend Getaway",
+                            "Celebration",
+                            "Corporate Retreat",
+                            "Honeymoon",
+                            "Other",
+                          ].map((option) => (
+                            <option key={option} value={option}>
+                              {option}
+                            </option>
+                          ))}
                         </select>
                       </div>
                     </div>
@@ -818,7 +839,7 @@ export default function Bookings() {
                     <textarea
                       placeholder="Any special requirements or preferences..."
                       rows="3"
-                      className="w-full border-2 border-gray-200 p-4 rounded-xl focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-100 transition text-base resize-none"
+                      className="w-full border-2 border-gray-200 p-4 rounded-xl text-base text-slate-800 placeholder-gray-400 focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-100 transition resize-none"
                     ></textarea>
                   </div>
 
@@ -826,11 +847,11 @@ export default function Bookings() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 disabled:from-gray-400 disabled:to-gray-500 text-slate-900 font-bold py-5 px-8 rounded-xl shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 text-lg flex items-center justify-center gap-3 group"
+                    className="w-full bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 disabled:from-gray-400 disabled:to-gray-500 text-white font-semibold py-5 px-8 rounded-xl shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 text-lg flex items-center justify-center gap-3 group"
                   >
                     {isSubmitting ? (
                       <>
-                        <div className="w-6 h-6 border-2 border-slate-900 border-t-transparent rounded-full animate-spin"></div>
+                        <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                         Processing Your Request...
                       </>
                     ) : (
@@ -844,7 +865,7 @@ export default function Bookings() {
                   </button>
 
                   {/* Trust Badges */}
-                  <div className="flex items-center justify-center gap-6 pt-4 border-t border-gray-200">
+                  <div className="flex flex-wrap items-center justify-center gap-6 pt-6 border-t border-gray-200">
                     <div className="flex items-center gap-2 text-xs text-gray-500">
                       <Shield className="w-4 h-4 text-green-500" />
                       <span>SSL Secure</span>
@@ -862,8 +883,8 @@ export default function Bookings() {
               </div>
 
               {/* Background Decoration */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-teal-400 rounded-full opacity-20 blur-xl z-0"></div>
-              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-amber-400 rounded-full opacity-20 blur-xl z-0"></div>
+              <div className="absolute -top-6 -right-8 w-28 h-28 bg-teal-400 rounded-full opacity-25 blur-2xl z-0"></div>
+              <div className="absolute -bottom-6 -left-8 w-36 h-36 bg-amber-400 rounded-full opacity-25 blur-2xl z-0"></div>
             </div>
           </div>
         </div>
