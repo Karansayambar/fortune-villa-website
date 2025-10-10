@@ -15,7 +15,7 @@ export const metadata = {
     "premium apartments",
     "modern living",
   ],
-  metadataBase: new URL("https://fortunevilla.in"), // replace with your actual domain
+  metadataBase: new URL("https://www.fortunevillaalibag.com"), // replace with your actual domain
   alternates: {
     canonical: "/",
   },
@@ -23,7 +23,7 @@ export const metadata = {
     title: "Fortune Villa | Luxury Real Estate",
     description:
       "Discover your dream property with Fortune Villa. Luxury homes, villas, and apartments designed for elegant living.",
-    url: "https://fortunevilla.in",
+    url: "https://www.fortunevillaalibag.com",
     siteName: "Fortune Villa",
     locale: "en_US",
     type: "website",
