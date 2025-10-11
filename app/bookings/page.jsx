@@ -692,11 +692,8 @@ export default function Bookings() {
                 </div>
 
                 {/* FORM */}
-                <form
-                  onSubmit={handleSubmit}
-                  className="space-y-8 max-h-[80vh] overflow-y-auto pr-1 sm:pr-0"
-                >
-                  {/* NAME & PHONE */}
+                <form onSubmit={handleSubmit} className="space-y-8">
+                  {/* Name & Phone */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     {/* Full Name */}
                     <div className="space-y-2">
@@ -704,15 +701,15 @@ export default function Bookings() {
                         Full Name <span className="text-red-500">*</span>
                       </label>
                       <div className="relative">
-                        <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                        <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
                         <input
                           type="text"
                           name="name"
+                          placeholder="Your full name"
                           value={form.name}
                           onChange={handleChange}
-                          placeholder="Your full name"
-                          className="w-full border border-slate-300 pl-12 pr-4 py-3 sm:py-4 rounded-xl text-base text-slate-900 placeholder-slate-400 focus:outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition"
                           required
+                          className="w-full bg-white text-slate-900 border border-slate-300 pl-12 pr-4 py-3 sm:py-4 rounded-xl placeholder-slate-400 focus:outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition appearance-none text-[16px]"
                         />
                       </div>
                     </div>
@@ -723,28 +720,27 @@ export default function Bookings() {
                         Phone / WhatsApp <span className="text-red-500">*</span>
                       </label>
                       <div className="relative">
-                        <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                        <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
                         <input
                           type="tel"
                           name="phone"
+                          placeholder="+91 98765 43210"
                           value={form.phone}
                           onChange={handleChange}
-                          placeholder="+91 98765 43210"
-                          className="w-full border border-slate-300 pl-12 pr-4 py-3 sm:py-4 rounded-xl text-base text-slate-900 placeholder-slate-400 focus:outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition"
                           required
+                          className="w-full bg-white text-slate-900 border border-slate-300 pl-12 pr-4 py-3 sm:py-4 rounded-xl placeholder-slate-400 focus:outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition appearance-none text-[16px]"
                         />
                       </div>
                     </div>
                   </div>
 
-                  {/* DATES */}
+                  {/* Stay Duration */}
                   <div className="space-y-2">
                     <label className="block text-sm font-semibold text-slate-800">
                       Stay Duration <span className="text-red-500">*</span>
                     </label>
-
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                      {/* Check-in Date */}
+                      {/* Check-in */}
                       <div className="relative">
                         <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
                         <input
@@ -752,14 +748,12 @@ export default function Bookings() {
                           name="checkIn"
                           value={form.checkIn}
                           onChange={handleChange}
-                          className="w-full bg-white border border-slate-300 text-slate-900 placeholder-slate-400 pl-12 pr-4 py-3 sm:py-4 rounded-xl 
-          focus:outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition 
-          appearance-none [&::-webkit-calendar-picker-indicator]:opacity-70 [&::-webkit-calendar-picker-indicator]:cursor-pointer"
                           required
+                          className="w-full bg-white text-slate-900 border border-slate-300 pl-12 pr-4 py-3 sm:py-4 rounded-xl focus:outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition appearance-none [&::-webkit-calendar-picker-indicator]:opacity-70 text-[16px]"
                         />
                       </div>
 
-                      {/* Check-out Date */}
+                      {/* Check-out */}
                       <div className="relative">
                         <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
                         <input
@@ -767,36 +761,33 @@ export default function Bookings() {
                           name="checkOut"
                           value={form.checkOut}
                           onChange={handleChange}
-                          className="w-full bg-white border border-slate-300 text-slate-900 placeholder-slate-400 pl-12 pr-4 py-3 sm:py-4 rounded-xl 
-          focus:outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition 
-          appearance-none [&::-webkit-calendar-picker-indicator]:opacity-70 [&::-webkit-calendar-picker-indicator]:cursor-pointer"
                           required
+                          className="w-full bg-white text-slate-900 border border-slate-300 pl-12 pr-4 py-3 sm:py-4 rounded-xl focus:outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition appearance-none [&::-webkit-calendar-picker-indicator]:opacity-70 text-[16px]"
                         />
                       </div>
                     </div>
                   </div>
 
-                  {/* GUESTS & OCCASION */}
+                  {/* Guests & Occasion */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    {/* Guests */}
                     <div className="space-y-2">
                       <label className="block text-sm font-semibold text-slate-800">
                         Number of Guests <span className="text-red-500">*</span>
                       </label>
                       <div className="relative">
-                        <Users className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                        <Users className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
                         <select
                           name="guests"
                           value={form.guests}
                           onChange={handleChange}
-                          className="w-full border border-slate-300 pl-12 pr-4 py-3 sm:py-4 rounded-xl bg-white text-slate-900 focus:outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition"
                           required
+                          className="w-full bg-white text-slate-900 border border-slate-300 pl-12 pr-4 py-3 sm:py-4 rounded-xl focus:outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition appearance-none text-[16px]"
                         >
                           <option value="">Select guests</option>
                           {[...Array(15)].map((_, i) => (
                             <option key={i + 1} value={i + 1}>
-                              {i + 1 === 1
-                                ? `${i + 1} guest`
-                                : `${i + 1} guests`}
+                              {i + 1} guest{i + 1 > 1 ? "s" : ""}
                             </option>
                           ))}
                           <option value="15+">15+ guests</option>
@@ -804,17 +795,18 @@ export default function Bookings() {
                       </div>
                     </div>
 
+                    {/* Occasion */}
                     <div className="space-y-2">
                       <label className="block text-sm font-semibold text-slate-800">
                         Occasion Type
                       </label>
                       <div className="relative">
-                        <Sparkles className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                        <Sparkles className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
                         <select
                           name="occasion"
                           value={form.occasion}
                           onChange={handleChange}
-                          className="w-full border border-slate-300 pl-12 pr-4 py-3 sm:py-4 rounded-xl bg-white text-slate-900 focus:outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition"
+                          className="w-full bg-white text-slate-900 border border-slate-300 pl-12 pr-4 py-3 sm:py-4 rounded-xl focus:outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition appearance-none text-[16px]"
                         >
                           <option value="">Select occasion</option>
                           {[
@@ -834,22 +826,19 @@ export default function Bookings() {
                     </div>
                   </div>
 
-                  {/* SPECIAL REQUESTS */}
+                  {/* Special Requests */}
                   <div className="space-y-2">
                     <label className="block text-sm font-semibold text-slate-800">
                       Special Requests (Optional)
                     </label>
                     <textarea
-                      name="special"
-                      value={form.special}
-                      onChange={handleChange}
                       placeholder="Any special requirements or preferences..."
-                      rows={3}
-                      className="w-full border border-slate-300 p-4 rounded-xl text-base text-slate-900 placeholder-slate-400 focus:outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition resize-none"
-                    />
+                      rows="3"
+                      className="w-full bg-white text-slate-900 border border-slate-300 p-4 rounded-xl placeholder-slate-400 focus:outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition resize-none appearance-none text-[16px]"
+                    ></textarea>
                   </div>
 
-                  {/* BUTTON */}
+                  {/* Submit */}
                   <button
                     type="submit"
                     disabled={isSubmitting}
@@ -863,26 +852,23 @@ export default function Bookings() {
                     ) : (
                       <>
                         <span>Secure My Dates</span>
-                        <div className="group-hover:translate-x-1 transition-transform">
-                          <Check className="w-5 h-5" />
-                        </div>
+                        <Check className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                       </>
                     )}
                   </button>
 
-                  {/* TRUST BADGES */}
-                  <div className="flex flex-wrap items-center justify-center gap-6 pt-6 border-t border-gray-200">
-                    <div className="flex items-center gap-2 text-xs text-slate-500">
-                      <Shield className="w-4 h-4 text-green-500" />
-                      <span>SSL Secure</span>
+                  {/* Trust Badges */}
+                  <div className="flex flex-wrap items-center justify-center gap-6 pt-6 border-t border-slate-200 text-xs text-slate-500">
+                    <div className="flex items-center gap-2">
+                      <Shield className="w-4 h-4 text-green-500" /> SSL Secure
                     </div>
-                    <div className="flex items-center gap-2 text-xs text-slate-500">
-                      <Lock className="w-4 h-4 text-blue-500" />
-                      <span>Privacy Protected</span>
+                    <div className="flex items-center gap-2">
+                      <Lock className="w-4 h-4 text-blue-500" /> Privacy
+                      Protected
                     </div>
-                    <div className="flex items-center gap-2 text-xs text-slate-500">
-                      <Clock className="w-4 h-4 text-amber-500" />
-                      <span>Quick Response</span>
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-4 h-4 text-amber-500" /> Quick
+                      Response
                     </div>
                   </div>
                 </form>
