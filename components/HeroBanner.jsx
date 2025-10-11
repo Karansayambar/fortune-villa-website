@@ -114,7 +114,7 @@ export default function HeroBanner() {
         >
           {[
             { number: "4", label: "Luxury Bedrooms" },
-            { number: "15+", label: "Amenities" },
+            { number: "10+", label: "Amenities" },
             { number: "24/7", label: "Premium Support" },
             { number: "5min", label: "Beach Access" },
           ].map((stat, idx) => (
