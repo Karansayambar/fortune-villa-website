@@ -29,7 +29,7 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "/assets/bannerImg.JPG", // adjust if banner image has a different name or location
+        url: "/assets/bannerImg.JPG",
         width: 1200,
         height: 630,
         alt: "Fortune Villa - Luxury Real Estate",
@@ -47,6 +47,11 @@ export const metadata = {
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
+  },
+
+  // Google Search Console verification
+  verification: {
+    google: "iycSDRlLQ_-P8HyZORmxy43CCk64WTrtcAGi-mYSNnQ",
   },
 };
 
