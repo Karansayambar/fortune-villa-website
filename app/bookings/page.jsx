@@ -597,17 +597,17 @@ export default function Bookings() {
       {/* Enhanced Booking Form Section */}
       <section
         id="booking-form"
-        className="w-full py-12 md:py-20 px-4 md:px-6 bg-slate-900"
+        className="w-full py-12 md:py-20 px-4 sm:px-6 md:px-8 bg-slate-900"
       >
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            {/* Left Side - Content */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            {/* LEFT SIDE */}
             <div className="text-white">
-              <div className="mb-8">
+              <div className="mb-10">
                 <span className="text-teal-400 text-sm font-bold tracking-widest uppercase">
-                  RESERVE YOUR STAY
+                  Reserve Your Stay
                 </span>
-                <h2 className="text-4xl md:text-5xl font-black mt-4 mb-6">
+                <h2 className="text-4xl md:text-5xl font-black mt-4 mb-6 leading-tight">
                   Ready for Your
                   <span className="text-amber-400 block">Luxury Escape?</span>
                 </h2>
@@ -618,8 +618,8 @@ export default function Bookings() {
                 </p>
               </div>
 
-              {/* Features List */}
-              <div className="space-y-6 mb-8">
+              {/* FEATURES */}
+              <div className="space-y-5 mb-10">
                 {[
                   {
                     icon: "⚡",
@@ -641,76 +641,77 @@ export default function Bookings() {
                     title: "VIP Treatment",
                     desc: "Personalized service from start to finish",
                   },
-                ].map((feature, idx) => (
+                ].map((f, i) => (
                   <div
-                    key={idx}
-                    className="flex items-start gap-4 p-4 bg-slate-800 rounded-xl"
+                    key={i}
+                    className="flex items-start gap-4 p-4 bg-slate-800/80 rounded-xl border border-slate-700 hover:border-amber-500 transition"
                   >
-                    <span className="text-2xl">{feature.icon}</span>
+                    <span className="text-2xl">{f.icon}</span>
                     <div>
                       <h3 className="font-bold text-white text-lg">
-                        {feature.title}
+                        {f.title}
                       </h3>
-                      <p className="text-slate-400 text-sm">{feature.desc}</p>
+                      <p className="text-slate-400 text-sm">{f.desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
 
-              {/* Contact Info */}
-              <div className="bg-gradient-to-r from-teal-600 to-blue-600 p-6 rounded-2xl">
-                <h3 className="font-bold text-white text-xl mb-4">
+              {/* CONTACT BOX */}
+              <div className="bg-gradient-to-r from-teal-600 to-blue-600 p-6 rounded-2xl shadow-lg">
+                <h3 className="font-bold text-white text-xl mb-3">
                   Need Immediate Assistance?
                 </h3>
-                <div className="space-y-3">
-                  <a
-                    href="tel:+918425842855"
-                    className="flex items-center gap-3 text-white hover:text-amber-200 transition"
-                  >
-                    <Phone className="w-5 h-5" />
-                    <span className="font-semibold">+91 84258 42855</span>
-                  </a>
-                  <p className="text-teal-100 text-sm">
-                    Available 24/7 for your convenience
-                  </p>
-                </div>
+                <a
+                  href="tel:+918425842855"
+                  className="flex items-center gap-3 text-white hover:text-amber-200 transition"
+                >
+                  <Phone className="w-5 h-5" />
+                  <span className="font-semibold">+91 84258 42855</span>
+                </a>
+                <p className="text-teal-100 text-sm mt-2">
+                  Available 24/7 for your convenience
+                </p>
               </div>
             </div>
 
-            {/* Right Side - Form */}
-            <div className="relative flex justify-center">
-              {/* Floating Form */}
-              <div className="bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-12 transform hover:scale-[1.02] transition-all duration-500 max-w-3xl w-full border border-gray-100">
-                {/* Form Header */}
-                <div className="text-center mb-10">
+            {/* RIGHT SIDE - FORM */}
+            <div className="relative flex justify-center overflow-hidden">
+              <div className="bg-white rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10 xl:p-12 border border-gray-300 w-full max-w-3xl relative z-10">
+                {/* HEADER */}
+                <div className="text-center mb-8 md:mb-10">
                   <div className="w-16 h-16 bg-gradient-to-r from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg">
                     <Calendar className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-3xl md:text-4xl font-black text-slate-900 mb-2 tracking-tight">
+                  <h3 className="text-3xl md:text-4xl font-black text-slate-900 mb-2">
                     Book Your Stay
                   </h3>
-                  <p className="text-gray-600 text-base md:text-lg">
+                  <p className="text-slate-600 text-base md:text-lg">
                     Complete this form to secure your dates
                   </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-8">
-                  {/* Name & Phone */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* FORM */}
+                <form
+                  onSubmit={handleSubmit}
+                  className="space-y-8 max-h-[80vh] overflow-y-auto pr-1 sm:pr-0"
+                >
+                  {/* NAME & PHONE */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     {/* Full Name */}
                     <div className="space-y-2">
-                      <label className="block text-sm font-semibold text-slate-700">
+                      <label className="block text-sm font-semibold text-slate-800">
                         Full Name <span className="text-red-500">*</span>
                       </label>
                       <div className="relative">
-                        <User className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                        <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                         <input
                           type="text"
                           name="name"
-                          placeholder="Your full name"
                           value={form.name}
                           onChange={handleChange}
-                          className="w-full border-2 border-gray-200 pl-12 pr-4 py-4 rounded-xl text-base text-slate-800 placeholder-gray-400 focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-100 transition"
+                          placeholder="Your full name"
+                          className="w-full border border-slate-300 pl-12 pr-4 py-3 sm:py-4 rounded-xl text-base text-slate-900 placeholder-slate-400 focus:outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition"
                           required
                         />
                       </div>
@@ -718,72 +719,76 @@ export default function Bookings() {
 
                     {/* Phone */}
                     <div className="space-y-2">
-                      <label className="block text-sm font-semibold text-slate-700">
+                      <label className="block text-sm font-semibold text-slate-800">
                         Phone / WhatsApp <span className="text-red-500">*</span>
                       </label>
                       <div className="relative">
-                        <Phone className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                        <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                         <input
                           type="tel"
                           name="phone"
-                          placeholder="+91 98765 43210"
                           value={form.phone}
                           onChange={handleChange}
-                          className="w-full border-2 border-gray-200 pl-12 pr-4 py-4 rounded-xl text-base text-slate-800 placeholder-gray-400 focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-100 transition"
+                          placeholder="+91 98765 43210"
+                          className="w-full border border-slate-300 pl-12 pr-4 py-3 sm:py-4 rounded-xl text-base text-slate-900 placeholder-slate-400 focus:outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition"
                           required
                         />
                       </div>
                     </div>
                   </div>
 
-                  {/* Stay Duration */}
+                  {/* DATES */}
                   <div className="space-y-2">
-                    <label className="block text-sm font-semibold text-slate-700">
+                    <label className="block text-sm font-semibold text-slate-800">
                       Stay Duration <span className="text-red-500">*</span>
                     </label>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      {/* Check-in */}
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      {/* Check-in Date */}
                       <div className="relative">
-                        <Calendar className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                        <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
                         <input
                           type="date"
                           name="checkIn"
                           value={form.checkIn}
                           onChange={handleChange}
-                          className="w-full border-2 border-gray-200 pl-12 pr-4 py-4 rounded-xl text-base text-slate-800 focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-100 transition"
+                          className="w-full bg-white border border-slate-300 text-slate-900 placeholder-slate-400 pl-12 pr-4 py-3 sm:py-4 rounded-xl 
+          focus:outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition 
+          appearance-none [&::-webkit-calendar-picker-indicator]:opacity-70 [&::-webkit-calendar-picker-indicator]:cursor-pointer"
                           required
                         />
                       </div>
 
-                      {/* Check-out */}
+                      {/* Check-out Date */}
                       <div className="relative">
-                        <Calendar className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                        <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
                         <input
                           type="date"
                           name="checkOut"
                           value={form.checkOut}
                           onChange={handleChange}
-                          className="w-full border-2 border-gray-200 pl-12 pr-4 py-4 rounded-xl text-base text-slate-800 focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-100 transition"
+                          className="w-full bg-white border border-slate-300 text-slate-900 placeholder-slate-400 pl-12 pr-4 py-3 sm:py-4 rounded-xl 
+          focus:outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition 
+          appearance-none [&::-webkit-calendar-picker-indicator]:opacity-70 [&::-webkit-calendar-picker-indicator]:cursor-pointer"
                           required
                         />
                       </div>
                     </div>
                   </div>
 
-                  {/* Guests & Occasion */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Guests */}
+                  {/* GUESTS & OCCASION */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label className="block text-sm font-semibold text-slate-700">
+                      <label className="block text-sm font-semibold text-slate-800">
                         Number of Guests <span className="text-red-500">*</span>
                       </label>
                       <div className="relative">
-                        <Users className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                        <Users className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                         <select
                           name="guests"
                           value={form.guests}
                           onChange={handleChange}
-                          className="w-full border-2 border-gray-200 pl-12 pr-4 py-4 rounded-xl text-base text-slate-800 bg-white focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-100 transition"
+                          className="w-full border border-slate-300 pl-12 pr-4 py-3 sm:py-4 rounded-xl bg-white text-slate-900 focus:outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition"
                           required
                         >
                           <option value="">Select guests</option>
@@ -791,27 +796,25 @@ export default function Bookings() {
                             <option key={i + 1} value={i + 1}>
                               {i + 1 === 1
                                 ? `${i + 1} guest`
-                                : i + 1 === 15
-                                ? `${i + 1}+ guests`
                                 : `${i + 1} guests`}
                             </option>
                           ))}
+                          <option value="15+">15+ guests</option>
                         </select>
                       </div>
                     </div>
 
-                    {/* Occasion */}
                     <div className="space-y-2">
-                      <label className="block text-sm font-semibold text-slate-700">
+                      <label className="block text-sm font-semibold text-slate-800">
                         Occasion Type
                       </label>
                       <div className="relative">
-                        <Sparkles className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                        <Sparkles className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                         <select
                           name="occasion"
                           value={form.occasion}
                           onChange={handleChange}
-                          className="w-full border-2 border-gray-200 pl-12 pr-4 py-4 rounded-xl text-base text-slate-800 bg-white focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-100 transition"
+                          className="w-full border border-slate-300 pl-12 pr-4 py-3 sm:py-4 rounded-xl bg-white text-slate-900 focus:outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition"
                         >
                           <option value="">Select occasion</option>
                           {[
@@ -831,19 +834,22 @@ export default function Bookings() {
                     </div>
                   </div>
 
-                  {/* Special Requests */}
+                  {/* SPECIAL REQUESTS */}
                   <div className="space-y-2">
-                    <label className="block text-sm font-semibold text-slate-700">
+                    <label className="block text-sm font-semibold text-slate-800">
                       Special Requests (Optional)
                     </label>
                     <textarea
+                      name="special"
+                      value={form.special}
+                      onChange={handleChange}
                       placeholder="Any special requirements or preferences..."
-                      rows="3"
-                      className="w-full border-2 border-gray-200 p-4 rounded-xl text-base text-slate-800 placeholder-gray-400 focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-100 transition resize-none"
-                    ></textarea>
+                      rows={3}
+                      className="w-full border border-slate-300 p-4 rounded-xl text-base text-slate-900 placeholder-slate-400 focus:outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition resize-none"
+                    />
                   </div>
 
-                  {/* Submit Button */}
+                  {/* BUTTON */}
                   <button
                     type="submit"
                     disabled={isSubmitting}
@@ -864,17 +870,17 @@ export default function Bookings() {
                     )}
                   </button>
 
-                  {/* Trust Badges */}
+                  {/* TRUST BADGES */}
                   <div className="flex flex-wrap items-center justify-center gap-6 pt-6 border-t border-gray-200">
-                    <div className="flex items-center gap-2 text-xs text-gray-500">
+                    <div className="flex items-center gap-2 text-xs text-slate-500">
                       <Shield className="w-4 h-4 text-green-500" />
                       <span>SSL Secure</span>
                     </div>
-                    <div className="flex items-center gap-2 text-xs text-gray-500">
+                    <div className="flex items-center gap-2 text-xs text-slate-500">
                       <Lock className="w-4 h-4 text-blue-500" />
                       <span>Privacy Protected</span>
                     </div>
-                    <div className="flex items-center gap-2 text-xs text-gray-500">
+                    <div className="flex items-center gap-2 text-xs text-slate-500">
                       <Clock className="w-4 h-4 text-amber-500" />
                       <span>Quick Response</span>
                     </div>
@@ -882,13 +888,14 @@ export default function Bookings() {
                 </form>
               </div>
 
-              {/* Background Decoration */}
-              <div className="absolute -top-6 -right-8 w-28 h-28 bg-teal-400 rounded-full opacity-25 blur-2xl z-0"></div>
-              <div className="absolute -bottom-6 -left-8 w-36 h-36 bg-amber-400 rounded-full opacity-25 blur-2xl z-0"></div>
+              {/* Background Glow */}
+              <div className="absolute -top-6 -right-8 w-28 h-28 bg-teal-400 rounded-full opacity-20 blur-3xl z-0"></div>
+              <div className="absolute -bottom-6 -left-8 w-36 h-36 bg-amber-400 rounded-full opacity-20 blur-3xl z-0"></div>
             </div>
           </div>
         </div>
       </section>
+
       {/* Footer CTA */}
       <section className="w-full bg-gradient-to-r from-slate-900 to-slate-800 text-white py-8 md:py-12 px-4 md:px-6">
         <div className="max-w-6xl mx-auto text-center">
