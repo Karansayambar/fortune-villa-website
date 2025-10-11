@@ -241,7 +241,7 @@ export default function Bookings() {
         <div className="max-w-5xl mx-auto flex flex-wrap justify-center gap-6 md:gap-8">
           {[
             { number: "4", label: "Bedrooms" },
-            { number: "15+", label: "Amenities" },
+            { number: "10+", label: "Amenities" },
             { number: "24/7", label: "Support" },
             { number: "5min", label: "To Beach" },
           ].map((stat, idx) => (
