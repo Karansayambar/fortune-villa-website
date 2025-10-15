@@ -7,3 +7,7 @@ node_modules/
 .next/
 out/
 dist/
+
+# Local environment variables
+.env.local
+.env

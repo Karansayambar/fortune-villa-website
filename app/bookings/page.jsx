@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion"; // Inside your component
 import "../../app/globals.css";
+import emailjs from "emailjs-com";
 
 // import bancany from "../../public/assets/balcany/balcanyIMG2.JPG";
 // import bedroom from "../../public/assets/bathroom/bedroomIMG5.JPG";
@@ -24,6 +25,7 @@ import {
   Clock,
   Shield,
   Lock,
+  Mail,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -31,10 +33,12 @@ export default function Bookings() {
   const [form, setForm] = useState({
     name: "",
     phone: "",
+    customer_email: "",
     checkIn: "",
     checkOut: "",
     guests: "",
     occasion: "",
+    specialRequests: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -52,20 +56,54 @@ export default function Bookings() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    const templateParams = {
+      name: form.name,
+      phone: form.phone,
+      customer_email: form.email,
+      checkIn: form.checkIn,
+      checkOut: form.checkOut,
+      guests: form.guests,
+      occasion: form.occasion,
+      specialRequests: form.specialRequests,
+    };
 
-    alert("Our team will contact you shortly to confirm your booking!");
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+      );
+
+      alert("✅ Your booking request has been sent successfully!");
+      setForm({
+        name: "",
+        phone: "",
+        customer_email: "",
+        checkIn: "",
+        checkOut: "",
+        guests: "",
+        occasion: "",
+        specialRequests: "",
+      });
+      alert("Our team will contact you shortly to confirm your booking!");
+    } catch (error) {
+      console.error("Email send failed:", error);
+      alert("❌ Failed to send booking request. Please try again.");
+    }
+
     setIsSubmitting(false);
 
     // Reset form
     setForm({
       name: "",
+      customer_email: "",
       phone: "",
       checkIn: "",
       checkOut: "",
       guests: "",
       occasion: "",
+      specialRequests: "",
     });
   };
 
@@ -694,7 +732,7 @@ export default function Bookings() {
                 {/* FORM */}
                 <form onSubmit={handleSubmit} className="space-y-8">
                   {/* Name & Phone */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-1 gap-6">
                     {/* Full Name */}
                     <div className="space-y-2">
                       <label className="block text-sm font-semibold text-slate-800">
@@ -713,7 +751,28 @@ export default function Bookings() {
                         />
                       </div>
                     </div>
+                  </div>
 
+                  {/* Email section */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    {/* Email */}
+                    <div className="space-y-2">
+                      <label className="block text-sm font-semibold text-slate-800">
+                        Your Email <span className="text-red-500">*</span>
+                      </label>
+                      <div className="relative">
+                        <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+                        <input
+                          type="email"
+                          name="email"
+                          placeholder="Your email"
+                          value={form.email}
+                          onChange={handleChange}
+                          required
+                          className="w-full bg-white text-slate-900 border border-slate-300 pl-12 pr-4 py-3 sm:py-4 rounded-xl placeholder-slate-400 focus:outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition appearance-none text-[16px]"
+                        />
+                      </div>
+                    </div>
                     {/* Phone */}
                     <div className="space-y-2">
                       <label className="block text-sm font-semibold text-slate-800">
@@ -832,8 +891,11 @@ export default function Bookings() {
                       Special Requests (Optional)
                     </label>
                     <textarea
+                      name="specialRequests"
                       placeholder="Any special requirements or preferences..."
                       rows="3"
+                      value={form.specialRequests}
+                      onChange={handleChange}
                       className="w-full bg-white text-slate-900 border border-slate-300 p-4 rounded-xl placeholder-slate-400 focus:outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-100 transition resize-none appearance-none text-[16px]"
                     ></textarea>
                   </div>
