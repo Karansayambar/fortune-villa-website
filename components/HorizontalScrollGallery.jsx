@@ -208,9 +208,13 @@ const HorizontalScrollGallery = () => {
       {!isMobile && (
         <div
           ref={containerRef}
-          className="relative min-h-screen w-screen overflow-hidden bg-black"
+          className="relative w-screen min-h-screen bg-gradient-to-br from-gray-900 via-slate-800 to-emerald-800
+ overflow-hidden"
         >
-          <div ref={galleryRef} className="flex h-screen bg-black">
+          <div
+            ref={galleryRef}
+            className="flex h-screen bg-gradient-to-br from-gray-900 via-slate-800 to-emerald-800"
+          >
             {data.map(
               (
                 { categoryName, sectionTitle, sectionDescription, items },
@@ -220,7 +224,7 @@ const HorizontalScrollGallery = () => {
                 return (
                   <div
                     key={index}
-                    className="flex-shrink-0 w-full h-screen relative flex items-center justify-center p-4 bg-black"
+                    className="flex-shrink-0 w-full h-screen relative flex items-center justify-center p-4 "
                   >
                     <div className="z-20 text-center mb-6 p-8">
                       <h2 className="text-6xl font-bold text-white">
@@ -228,8 +232,8 @@ const HorizontalScrollGallery = () => {
                       </h2>
                     </div>
 
-                    <div className="w-full absolute inset-0 opacity-30">
-                      {firstItem.type === "video" ? (
+                    <div className="w-full absolute inset-0 opacity-30 ">
+                      {/* {firstItem.type === "video" ? (
                         <video
                           src={firstItem.src}
                           className="w-full h-full object-cover"
@@ -246,7 +250,7 @@ const HorizontalScrollGallery = () => {
                           loading="lazy"
                           className="w-full h-full object-cover"
                         />
-                      )}
+                      )} */}
                       <div className="absolute inset-0 bg-black/30" />
                     </div>
 
