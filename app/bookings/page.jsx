@@ -671,7 +671,7 @@ export default function Bookings() {
                   {
                     icon: "🛡️",
                     title: "Flexible Cancellation",
-                    desc: "Free cancellation up to 7 days before",
+                    desc: "Free cancellation up to 30 days before",
                   },
                   {
                     icon: "👑",
